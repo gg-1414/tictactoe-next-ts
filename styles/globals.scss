@@ -1,0 +1,34 @@
+$white: #FFF;
+$yellow: #FFED8C;
+$red: #FF2222;
+$purple-1: #6C48FD;
+$purple-2: #4617FF;
+$purple-3: #330DCA;
+$purple-4: #260E85;
+$green: #0AF383;
+
+$gradient-green-blue: linear-gradient(90deg, #42FF00 0%, #06C3FF 100%);
+$gradient-pink-purple: linear-gradient(90deg, #FF00E5 0%, #7625F9 100%);
+$gradient-yellow-orange: linear-gradient(180deg, #FFDA16 0%, #FF2E00 100%);
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  background: $purple-2;
+  background-image: url('/galaxy.png');
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
