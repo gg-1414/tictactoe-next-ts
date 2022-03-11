@@ -11,10 +11,11 @@ import classes from './index.module.scss';
 
 interface Props {
   type: string;
+  handlePlayerSubmit(names: string[]): void;
 }
 
 const NameCollectionForm = (props: Props) => {
-  const { type } = props;
+  const { type, handlePlayerSubmit } = props;
 
   const playersDefaultState = type === 'single' ? [''] : ['', ''];
   const [players, setPlayers] = useState(playersDefaultState);
@@ -23,6 +24,11 @@ const NameCollectionForm = (props: Props) => {
     const newPlayers = [...players];
     newPlayers[index] = e.currentTarget.value;
     setPlayers(newPlayers);
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handlePlayerSubmit(players);
   }
 
   const canStart = useMemo(
@@ -65,7 +71,7 @@ const NameCollectionForm = (props: Props) => {
 
   return (
     <div className={classes.wrapper}>
-      <form>
+      <form onSubmit={handleSubmit}>
         {input}
         <button
           type="submit"
@@ -76,7 +82,7 @@ const NameCollectionForm = (props: Props) => {
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default NameCollectionForm;
