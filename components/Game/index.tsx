@@ -20,18 +20,26 @@ interface Props {
 const Game = (props: Props) => {
   const { players, turn, board } = props;
 
+  const renderPlayers = players.map((player, index) => {
+    const isPlayersTurn = !!(turn === 'X' && !index || turn === 'O' && index);
+    return (
+      <div key={index}>
+        <PlayerCard
+          index={index}
+          avatar={!index ? Avatar1 : Avatar2}
+          name={player}
+          symbol={!index ? "X" : "O"}
+          active={isPlayersTurn}
+        />
+        <p>{isPlayersTurn ? "Your turn" : ''}</p>
+      </div>
+    )
+  })
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.players}>
-        {players.map((player, index) => (
-          <PlayerCard
-            key={index}
-            index={index}
-            avatar={!index ? Avatar1 : Avatar2}
-            name={player}
-            symbol={!index ? "X" : "O"}
-          />
-        ))}
+        {renderPlayers}
       </div>
     </div>
   );

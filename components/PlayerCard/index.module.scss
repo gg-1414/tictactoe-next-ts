@@ -1,11 +1,13 @@
 @import '../../styles/variables.scss';
 
 .wrapper {
-  color: $white;
   background: $purple-4;
   border-radius: 12px;
   padding: 11px 17px;
-  text-align: center;
+
+  &.active {
+    border: 1px solid $white;
+  }
 
   h6 {
     font-size: 16px;

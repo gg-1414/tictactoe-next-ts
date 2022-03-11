@@ -1,5 +1,10 @@
+@import '../../styles/variables.scss';
+
 .players {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 28px;
+  color: $white;
+  text-align: center;
 }
+
