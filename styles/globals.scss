@@ -37,11 +37,7 @@ body {
 * {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-body {
-  background: $purple-2;
-  background-image: url('/galaxy.png');
+  box-sizing: border-box;
 }
 
 a {
@@ -58,8 +54,11 @@ button {
   border: none;
   line-height: 1;
   width: 100%;
+  cursor: pointer;
 }
 
-* {
-  box-sizing: border-box;
+input {
+  &:focus {
+    outline: none;
+  }
 }
