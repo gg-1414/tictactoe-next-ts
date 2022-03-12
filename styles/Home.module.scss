@@ -2,7 +2,7 @@
 
 .main {
   min-height: 100vh;
-  padding: 4rem 32px;
+  padding: 4rem $home_page_padding_x;
   flex: 1;
   background: $purple-2;
   background-image: url('/galaxy.png');

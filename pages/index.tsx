@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import classes from '../styles/Home.module.scss';
@@ -9,17 +8,27 @@ import Game from '../components/Game';
 import useTicTacToe from '../hooks/useTicTacToe';
 
 const Home: NextPage = () => {
-  const { status, type, players, turn, board, handleSelection, handlePlayerSubmit } = useTicTacToe();
+  const {
+    status,
+    type,
+    players,
+    turn,
+    board,
+    winnerIndex,
+    handleGameSelection,
+    handlePlayerSubmit,
+    handleClick,
+    handleRefreshGame,
+  } = useTicTacToe();
 
-  const start = () => (
+  const start = (
     <>
       <Logo />
       {!type ? (
-        <SelectGame handleSelection={handleSelection} />
+        <SelectGame handleGameSelection={handleGameSelection} />
       ) : (
         <NameCollectionForm
           type={type}
-          status={status}
           handlePlayerSubmit={handlePlayerSubmit}
         />
       )}
@@ -38,12 +47,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={classes.main}>
-        {status === 'created' && start()}
+        {status === 'created' && start}
         {(status === 'started' || status === 'finished') && (
           <Game
             players={players}
             turn={turn}
             board={board}
+            winnerIndex={winnerIndex}
+            handleClick={handleClick}
+            handleRefreshGame={handleRefreshGame}
           />
         )}
       </main>

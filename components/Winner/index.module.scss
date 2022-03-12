@@ -1,0 +1,13 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  background: $purple-1;
+  border-radius: 16px;
+  padding: 20px;
+  color: $white;
+  
+  h4 {
+    font-size: 32px;
+    margin: 16px 0 24px;
+  }
+}

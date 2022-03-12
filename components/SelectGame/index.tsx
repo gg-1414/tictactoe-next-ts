@@ -7,22 +7,22 @@
 import classes from './index.module.scss';
 
 interface Props {
-  handleSelection(selection: string): void;
+  handleGameSelection(selection: string): void;
 }
 
 const SelectGame = (props: Props) => {
-  const { handleSelection } = props;
+  const { handleGameSelection } = props;
 
   return (
     <div className={classes.wrapper}>
       <button
-        onClick={() => handleSelection('single')}
+        onClick={() => handleGameSelection('single')}
         className="background_gradient_green_blue"
       >
         SINGLE PLAYER
       </button>
       <button
-        onClick={() => handleSelection('multi')}
+        onClick={() => handleGameSelection('multi')}
         className="background_gradient_pink_purple"
       >
         MULTIPLAYER

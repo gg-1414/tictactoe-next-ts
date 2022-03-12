@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.wrapper {
+  $grid_gap: 8px;
+  $padding: 8px;
+  $row_height: calc(
+    (100vw - ($home_page_padding_x * 2) - ($grid_gap * 2) - ($padding * 2)) / 3
+  );
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, $row_height);
+  gap: $grid_gap;
+  background: $purple-1;
+  padding: $padding;
+  margin-top: 44px;
+
+  &,
+  button {
+    border-radius: 16px;
+  }
+}
