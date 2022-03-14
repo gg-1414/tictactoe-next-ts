@@ -10,11 +10,11 @@ import classes from './index.module.scss';
 
 interface Props {
   board: string[];
-  handleClick(index: number): void;
+  handlePlay(index: number): void;
 }
 
 const Board = (props: Props) => {
-  const { board, handleClick } = props;
+  const { board, handlePlay } = props;
 
   return (
     <div className={classes.wrapper}>
@@ -23,7 +23,7 @@ const Board = (props: Props) => {
           key={index}
           index={index}
           value={value}
-          handleClick={handleClick}
+          handlePlay={handlePlay}
         />
       ))}
     </div>

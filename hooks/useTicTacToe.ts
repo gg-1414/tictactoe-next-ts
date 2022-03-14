@@ -10,21 +10,21 @@
 import { useEffect, useMemo, useState } from 'react';
 
 interface ReturnValue {
-  status: string;
-  type: string | null;
+  status: 'created' | 'started' | 'finished';
+  type: 'single' | 'multi' | null;
   players: string[];
   turn: string;
   board: string[];
   winnerIndex: number | null;
   handleGameSelection(selection: string): void;
   handlePlayerSubmit(players: string[]): void;
-  handleClick(index: number): void;
+  handlePlay(index: number): void;
   handleRefreshGame(): void;
 }
 
 const useTicTacToe = (): ReturnValue => {
-  const [status, setStatus] = useState('created'); // created, started, finished
-  const [type, setType] = useState<string | null>(null); // single, multi
+  const [status, setStatus] = useState<'created' | 'started' | 'finished'>('created');
+  const [type, setType] = useState<'single' | 'multi' | null>(null);
   const [players, setPlayers] = useState(new Array(2).fill(''));
   const [turn, setTurn] = useState('X');
   const [board, setBoard] = useState(new Array(9).fill(''));
@@ -83,7 +83,7 @@ const useTicTacToe = (): ReturnValue => {
     }
   }, [board, turn, winningCombos]);
 
-  const handleGameSelection = (selection: string): void => {
+  const handleGameSelection = (selection: 'single' | 'multi'): void => {
     setType(selection);
   }
 
@@ -93,7 +93,24 @@ const useTicTacToe = (): ReturnValue => {
     setStatus('started');
   }
 
-  const handleClick = (index: number): void => {
+  const handleBotPlay = (newBoard: string[]) => {
+    if (winnerIndex !== null) return;
+
+    setTimeout(() => {
+      console.log('newBoard', newBoard)
+      let indexes: number[] = [];
+      board.forEach((element, index) => !element && indexes.push(index));
+  
+      const randomIndex = indexes[Math.floor(Math.random() * indexes.length)];
+      console.log('randomIndex', randomIndex)
+      newBoard[randomIndex] = 'O';
+  
+      setBoard(newBoard);
+      setTurn('X');
+    }, 1000)
+  }
+  
+  const handlePlay = (index: number): void => {
     /**
      * Should update board
      * Should update current turn to the other player symbol
@@ -107,6 +124,7 @@ const useTicTacToe = (): ReturnValue => {
     newBoard[index] = turn;
     setBoard(newBoard);
     setTurn(turn === 'X' ? 'O' : 'X');
+    handleBotPlay(newBoard);
   }
 
   const handleRefreshGame = (): void => {
@@ -114,7 +132,6 @@ const useTicTacToe = (): ReturnValue => {
      * Clears type, players, turn, board, winnerIndex
      * Sets status to 'created', which should render start view
      */
-    setType(null);
     setTurn('X');
     setBoard(new Array(9).fill(''));
     setWinnerIndex(null);
@@ -130,7 +147,7 @@ const useTicTacToe = (): ReturnValue => {
     winnerIndex,
     handleGameSelection,
     handlePlayerSubmit,
-    handleClick,
+    handlePlay,
     handleRefreshGame,
   };
 };

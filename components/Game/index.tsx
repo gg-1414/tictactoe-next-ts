@@ -21,12 +21,12 @@ interface Props {
   turn: string; // 'X' || 'O'
   board: string[];
   winnerIndex: number | null;
-  handleClick(index: number): void;
+  handlePlay(index: number): void;
   handleRefreshGame(): void;
 }
 
 const Game = (props: Props) => {
-  const { status, players, turn, board, winnerIndex, handleClick, handleRefreshGame } = props;
+  const { status, players, turn, board, winnerIndex, handlePlay, handleRefreshGame } = props;
 
   const renderPlayers = players.map((player, index) => {
     const isPlayersTurn = !!(turn === 'X' && !index || turn === 'O' && index);
@@ -71,7 +71,7 @@ const Game = (props: Props) => {
             : renderTie()
           : (
             <motion.div animate={{ opacity: [0, 1] }}>
-              <Board board={board} handleClick={handleClick} />
+              <Board board={board} handlePlay={handlePlay} />
             </motion.div>
           )
         }

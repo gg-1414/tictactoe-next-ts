@@ -17,7 +17,7 @@ const Home: NextPage = () => {
     winnerIndex,
     handleGameSelection,
     handlePlayerSubmit,
-    handleClick,
+    handlePlay,
     handleRefreshGame,
   } = useTicTacToe();
 
@@ -64,7 +64,7 @@ const Home: NextPage = () => {
               turn={turn}
               board={board}
               winnerIndex={winnerIndex}
-              handleClick={handleClick}
+              handlePlay={handlePlay}
               handleRefreshGame={handleRefreshGame}
             />
           )}

@@ -9,15 +9,15 @@ import classes from './index.module.scss';
 interface Props {
   index: number;
   value: string;
-  handleClick(index: number): void;
+  handlePlay(index: number): void;
 }
 
 const Square = (props: Props) => {
-  const { index, value, handleClick } = props;
+  const { index, value, handlePlay } = props;
 
   return (
     <button
-      onClick={() => handleClick(index)}
+      onClick={() => handlePlay(index)}
       className={`${value === 'X' ? "color_yellow" : "color_red"} ${classes.wrapper}`}
     >
       {value}
