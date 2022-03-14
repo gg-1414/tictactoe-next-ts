@@ -51,6 +51,7 @@ const Home: NextPage = () => {
           <video
             src="/billions-of-stars-in-the-milky-way-galaxy-seamles-2021-10-21-03-23-18-utc.mp4"
             placeholder="/galaxy-placeholder-1000.png"
+            playsInline
             autoPlay
             muted
             loop
