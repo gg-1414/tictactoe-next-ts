@@ -50,8 +50,14 @@ const Home: NextPage = () => {
       <main className={classes.main}>
         <div className={classes.container}>
           <Image
-            className={classes.background_placeholder}
+            className={`${classes.background_placeholder} ${classes.desktop}`}
             src="/galaxy-placeholder-1000.png"
+            alt="galaxy"
+            layout="fill"
+          />
+          <Image
+            className={`${classes.background_placeholder} ${classes.mobile}`}
+            src="/galaxy-placeholder-mobile.png"
             alt="galaxy"
             layout="fill"
           />

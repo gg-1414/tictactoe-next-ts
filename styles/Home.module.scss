@@ -25,6 +25,20 @@
     object-fit: cover;
   }
 
+  .background_placeholder {
+    &.desktop {
+      display: none;
+    }
+    @include tablet {
+      &.desktop {
+        display: block;
+      }
+      &.mobile {
+        display: none;
+      }
+    }
+  }
+
   .gradient_overlay {
     background: linear-gradient(180deg, #412EA8 0%, $purple-1 100%);
     opacity: 0.2;
