@@ -4,6 +4,7 @@
  * - Clicking on one updates state "players" by initializing the array with length one or two.
  */
 
+import { motion } from 'framer-motion';
 import classes from './index.module.scss';
 
 interface Props {
@@ -15,18 +16,26 @@ const SelectGame = (props: Props) => {
 
   return (
     <div className={classes.wrapper}>
-      <button
-        onClick={() => handleGameSelection('single')}
-        className="background_gradient_green_blue"
+      <motion.div
+        animate={{
+          scale: [1, 1.5, 1],
+          opacity: [0, 0.5, 1],
+        }}
+        style={{ display: 'flex', flexDirection: 'column' }}
       >
-        SINGLE PLAYER
-      </button>
-      <button
-        onClick={() => handleGameSelection('multi')}
-        className="background_gradient_pink_purple"
-      >
-        MULTIPLAYER
-      </button>
+        <button
+          onClick={() => handleGameSelection('single')}
+          className="background_gradient_green_blue"
+        >
+          SINGLE PLAYER
+        </button>
+        <button
+          onClick={() => handleGameSelection('multi')}
+          className="background_gradient_pink_purple"
+        >
+          MULTIPLAYER
+        </button>
+      </motion.div>
     </div>
   );
 };

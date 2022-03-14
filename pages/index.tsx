@@ -36,7 +36,7 @@ const Home: NextPage = () => {
   );
 
   return (
-    <div className={classes.container}>
+    <div>
       <Head>
         <title>Tic Tac Toe</title>
         <meta
@@ -47,17 +47,28 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={classes.main}>
-        {status === 'created' && start}
-        {(status === 'started' || status === 'finished') && (
-          <Game
-            players={players}
-            turn={turn}
-            board={board}
-            winnerIndex={winnerIndex}
-            handleClick={handleClick}
-            handleRefreshGame={handleRefreshGame}
+        <div className={classes.container}>
+          <video
+            src="/billions-of-stars-in-the-milky-way-galaxy-seamles-2021-10-21-03-23-18-utc.mp4"
+            placeholder="/galaxy-placeholder-1000.png"
+            autoPlay
+            muted
+            loop
           />
-        )}
+          <div className={classes.gradient_overlay} />
+          {status === 'created' && start}
+          {(status === 'started' || status === 'finished') && (
+            <Game
+              status={status}
+              players={players}
+              turn={turn}
+              board={board}
+              winnerIndex={winnerIndex}
+              handleClick={handleClick}
+              handleRefreshGame={handleRefreshGame}
+            />
+          )}
+        </div>
       </main>
     </div>
   );

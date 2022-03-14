@@ -9,11 +9,14 @@
 import PlayerCard from '../PlayerCard';
 import Board from '../Board';
 import Winner from '../Winner';
+import Tie from '../Tie';
 import classes from './index.module.scss';
 import Avatar1 from '../../public/avatar1.png';
 import Avatar2 from '../../public/avatar2.png';
+import { motion } from 'framer-motion';
 
 interface Props {
+  status: string;
   players: string[];
   turn: string; // 'X' || 'O'
   board: string[];
@@ -23,7 +26,7 @@ interface Props {
 }
 
 const Game = (props: Props) => {
-  const { players, turn, board, winnerIndex, handleClick, handleRefreshGame } = props;
+  const { status, players, turn, board, winnerIndex, handleClick, handleRefreshGame } = props;
 
   const renderPlayers = players.map((player, index) => {
     const isPlayersTurn = !!(turn === 'X' && !index || turn === 'O' && index);
@@ -41,21 +44,37 @@ const Game = (props: Props) => {
     );
   });
 
+  const renderWinner = () => (
+    <Winner
+      avatar={!winnerIndex ? Avatar1 : Avatar2}
+      name={!winnerIndex ? players[0] : players[1]}
+      handleRefreshGame={handleRefreshGame}
+    />
+  );
+
+  const renderTie = () => (
+    <Tie
+      avatars={[Avatar1, Avatar2]}
+      handleRefreshGame={handleRefreshGame}
+    />
+  );
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.players}>
         {renderPlayers}
       </div>
 
-      {winnerIndex !== null ? (
-        <Winner
-          avatar={!winnerIndex ? Avatar1 : Avatar2}
-          name={!winnerIndex ? players[0] : players[1]}
-          handleRefreshGame={handleRefreshGame}
-        />
-      ) : (
-        <Board board={board} handleClick={handleClick} />
-      )}
+        {status === 'finished'
+          ? winnerIndex !== null
+            ? renderWinner()
+            : renderTie()
+          : (
+            <motion.div animate={{ opacity: [0, 1] }}>
+              <Board board={board} handleClick={handleClick} />
+            </motion.div>
+          )
+        }
     </div>
   );
 };

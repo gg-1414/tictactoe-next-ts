@@ -1,14 +1,27 @@
 $white: #FFF;
-$yellow: #FFED8C;
-$red: #FF2222;
-$purple-1: #6C48FD;
-$purple-2: #4617FF;
-$purple-3: #330DCA;
-$purple-4: #260E85;
-$green: #0AF383;
+$yellow: #FECF31;
+$red: #EB1751;
+$green: #2ED57A;
+$blue: #239EEE;
+$pink: #DC2A81;
+$purple-1: #23135D;
+$purple-2: #332167;
+$purple-3: #6549C5;
 
-$gradient-green-blue: linear-gradient(90deg, #42FF00 0%, #06C3FF 100%);
-$gradient-pink-purple: linear-gradient(90deg, #FF00E5 0%, #7625F9 100%);
+$gradient-green-blue: linear-gradient(90deg, $green 0%, $blue 100%);
+$gradient-pink-purple: linear-gradient(90deg, $pink 0%, #A830F0 100%);
 $gradient-yellow-orange: linear-gradient(180deg, #FFDA16 0%, #FF2E00 100%);
 
 $home_page_padding_x: 32px;
+
+@mixin tablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1280px) {
+    @content;
+  }
+}

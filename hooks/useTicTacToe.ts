@@ -73,17 +73,15 @@ const useTicTacToe = (): ReturnValue => {
 
       if (first === second && second === third) {
         setWinnerIndex(turn === 'X' ? 1 : 0);
+        setStatus('finished');
         break;
+      }
+
+      if (!board.includes('')) {
+        setStatus('finished');
       }
     }
   }, [board, turn, winningCombos]);
-
-  useEffect(() => {
-    /**
-     * Set status of game if winnerIndex is a number.
-     * Else (if still null) return.
-     */
-  }, [winnerIndex]);
 
   const handleGameSelection = (selection: string): void => {
     setType(selection);
@@ -117,11 +115,10 @@ const useTicTacToe = (): ReturnValue => {
      * Sets status to 'created', which should render start view
      */
     setType(null);
-    setPlayers(new Array(2).fill(''));
     setTurn('X');
     setBoard(new Array(9).fill(''));
     setWinnerIndex(null);
-    setStatus('created');
+    setStatus('started');
   }
 
   return {
