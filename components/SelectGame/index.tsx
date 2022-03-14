@@ -26,6 +26,7 @@ const SelectGame = (props: Props) => {
         <button
           onClick={() => handleGameSelection('single')}
           className="background_gradient_green_blue"
+          disabled
         >
           SINGLE PLAYER
         </button>
