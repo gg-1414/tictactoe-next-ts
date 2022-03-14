@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import classes from '../styles/Home.module.scss';
 import Logo from '../components/Logo';
 import SelectGame from '../components/SelectGame';
@@ -48,6 +49,12 @@ const Home: NextPage = () => {
 
       <main className={classes.main}>
         <div className={classes.container}>
+          <Image
+            className={classes.background_placeholder}
+            src="/galaxy-placeholder-1000.png"
+            alt="galaxy"
+            layout="fill"
+          />
           <video
             src="/billions-of-stars-in-the-milky-way-galaxy-seamles-2021-10-21-03-23-18-utc.mp4"
             placeholder="/galaxy-placeholder-1000.png"
