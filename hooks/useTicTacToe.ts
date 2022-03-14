@@ -124,7 +124,7 @@ const useTicTacToe = (): ReturnValue => {
     newBoard[index] = turn;
     setBoard(newBoard);
     setTurn(turn === 'X' ? 'O' : 'X');
-    handleBotPlay(newBoard);
+    // handleBotPlay(newBoard);
   }
 
   const handleRefreshGame = (): void => {
